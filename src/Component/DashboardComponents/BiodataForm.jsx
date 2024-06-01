@@ -1,20 +1,97 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const BiodataForm = () => {
-    const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const divisions = ["Dhaka", "Chattagram", "Rangpur", "Barisal", "Khulna", "Maymansign", "Sylhet"];
-  // Assuming email is fetched and set
+
+  const handleAddBiodata = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const type = form.type.value;
+    const name = form.name.value;
+    const imageFile = form.image.files[0]; // Get the file object
+    const date = form.date.value;
+    const height = form.height.value;
+    const weight = form.weight.value;
+    const age = form.age.value;
+    const occupation = form.occupation.value;
+    const race = form.race.value;
+    const fName = form.father_name.value;
+    const mName = form.mother_name.value;
+    const permanentDivision = form.permanent.value;
+    const presentDivision = form.present.value;
+    const partnerAge = form.expected_partner_age.value;
+    const partnerHeight = form.expected_partner_height.value;
+    const partnerWeight = form.expected_partner_weight.value;
+    const email = form.email.value;
+    const number = form.number.value;
+
+    let image = '';
+    if (imageFile) {
+      const formData = new FormData();
+      formData.append('image', imageFile);
+
+      const response = await fetch(image_hosting_api, {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.json();
+      image = data.data.url;
+    }
+
+    const newBiodata = {
+      type,
+      name,
+      image,
+      date,
+      height,
+      weight,
+      age,
+      occupation,
+      race,
+      fName,
+      mName,
+      permanentDivision,
+      presentDivision,
+      partnerAge,
+      partnerHeight,
+      partnerWeight,
+      email,
+      number,
+    };
+    console.log(newBiodata);
+
+    // send data to server
+    fetch('http://localhost:5000/biodata', {
+        method: 'POST',
+        headers: {
+            'content-type' : 'application/json'
+        },
+        body: JSON.stringify(newBiodata)
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+    })
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white">
       <div className="w-full max-w-3xl p-8 space-y-6 bg-white rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center text-gray-700">Biodata Form</h2>
-        <form className="space-y-4">
+        <form onSubmit={handleAddBiodata} className="space-y-4">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
               <label className="block text-sm font-medium text-gray-700">Biodata Type</label>
-              <select className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+              <select
+                id="type"
+                name="type"
+                required
+                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+              >
                 <option value="">Select Type</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -35,24 +112,24 @@ const BiodataForm = () => {
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
-              <label htmlFor="profile-image" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="image" className="block text-sm font-medium text-gray-700">
                 Profile Image
               </label>
               <input
                 type="file"
-                id="profile-image"
-                name="profile-image"
+                id="image"
+                name="image"
                 className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               />
             </div>
             <div>
-              <label htmlFor="dob" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="date" className="block text-sm font-medium text-gray-700">
                 Date of Birth
               </label>
               <input
                 type="date"
-                id="dob"
-                name="dob"
+                id="date"
+                name="date"
                 required
                 className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               />
@@ -144,36 +221,36 @@ const BiodataForm = () => {
               </select>
             </div>
             <div>
-              <label htmlFor="fathers-name" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="father_name" className="block text-sm font-medium text-gray-700">
                 Father's Name
               </label>
               <input
                 type="text"
-                id="fathers-name"
-                name="fathers-name"
+                id="father_name"
+                name="father_name"
                 className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               />
             </div>
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
-              <label htmlFor="mothers-name" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="mother_name" className="block text-sm font-medium text-gray-700">
                 Mother's Name
               </label>
               <input
                 type="text"
-                id="mothers-name"
-                name="mothers-name"
+                id="mother_name"
+                name="mother_name"
                 className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               />
             </div>
             <div>
-              <label htmlFor="permanent-division" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="permanent" className="block text-sm font-medium text-gray-700">
                 Permanent Division
               </label>
               <select
-                id="permanent-division"
-                name="permanent-division"
+                id="permanent"
+                name="permanent"
                 required
                 className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               >
@@ -186,12 +263,12 @@ const BiodataForm = () => {
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
-              <label htmlFor="present-division" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="present" className="block text-sm font-medium text-gray-700">
                 Present Division
               </label>
               <select
-                id="present-division"
-                name="present-division"
+                id="present"
+                name="present"
                 required
                 className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               >
@@ -202,25 +279,25 @@ const BiodataForm = () => {
               </select>
             </div>
             <div>
-              <label htmlFor="expected-partner-age" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="expected_partner_age" className="block text-sm font-medium text-gray-700">
                 Expected Partner Age
               </label>
               <input
                 type="number"
-                id="expected-partner-age"
-                name="expected-partner-age"
+                id="expected_partner_age"
+                name="expected_partner_age"
                 className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               />
             </div>
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
-              <label htmlFor="expected-partner-height" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="expected_partner_height" className="block text-sm font-medium text-gray-700">
                 Expected Partner Height
               </label>
               <select
-                id="expected-partner-height"
-                name="expected-partner-height"
+                id="expected_partner_height"
+                name="expected_partner_height"
                 required
                 className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               >
@@ -232,12 +309,12 @@ const BiodataForm = () => {
               </select>
             </div>
             <div>
-              <label htmlFor="expected-partner-weight" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="expected_partner_weight" className="block text-sm font-medium text-gray-700">
                 Expected Partner Weight
               </label>
               <select
-                id="expected-partner-weight"
-                name="expected-partner-weight"
+                id="expected_partner_weight"
+                name="expected_partner_weight"
                 required
                 className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               >
@@ -251,26 +328,26 @@ const BiodataForm = () => {
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
-              <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Contact Email
               </label>
               <input
                 type="email"
-                id="contact-email"
-                name="contact-email"
+                id="email"
+                name="email"
                 value={user.email}
                 readOnly
                 className="w-full px-3 py-2 mt-1 border bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               />
             </div>
             <div>
-              <label htmlFor="mobile-number" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="number" className="block text-sm font-medium text-gray-700">
                 Mobile Number
               </label>
               <input
                 type="tel"
-                id="mobile-number"
-                name="mobile-number"
+                id="number"
+                name="number"
                 required
                 className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               />
