@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
+import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -75,8 +77,21 @@ const BiodataForm = () => {
     .then(res => res.json())
     .then(data => {
         console.log(data);
+        if(data.insertedId){
+            // show success popup
+           
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: ` New Biodata added.`,
+                showConfirmButton: false,
+                timer: 1500
+              });
+        }
     })
+    
   };
+
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white">

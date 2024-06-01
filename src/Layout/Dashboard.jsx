@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Dashboard = () => {
   const { user, logOut } = useContext(AuthContext);
 
@@ -12,7 +13,9 @@ const Dashboard = () => {
   };
 
   return (
+
     <div className="flex h-full">
+        <ToastContainer />
       {/* Sidebar */}
       <div className="w-64 bg-blue-800 text-white flex flex-col">
         <div className="h-16 flex items-center justify-center text-2xl font-bold">

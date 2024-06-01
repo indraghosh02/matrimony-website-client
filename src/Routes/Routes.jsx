@@ -6,11 +6,13 @@ import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
-import Biodata from "../Pages/Biodata/Biodata";
+// import Biodata from "../Pages/Biodata/Biodata";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
-import CreateBiodata from "../Pages/Dashboard/CreateBiodata/CreateBiodata";
+// import CreateBiodata from "../Pages/Dashboard/CreateBiodata/CreateBiodata";
 import CreateEditBiodat from "../Pages/createEditBiodat/CreateEditBiodat";
+import CardForm from "../Pages/Biodata/CardForm";
+import Biodata from "../Pages/Biodata/Biodata";
 
 
 
@@ -34,7 +36,8 @@ import CreateEditBiodat from "../Pages/createEditBiodat/CreateEditBiodat";
     },
     {
       path: '/biodata',
-      element: <PrivateRoute> <Biodata> </Biodata></PrivateRoute>
+      element: <Biodata> </Biodata>
+      // element: <CardForm></CardForm>
   },
   
       ]
