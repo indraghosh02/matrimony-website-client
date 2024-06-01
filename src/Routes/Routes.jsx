@@ -14,6 +14,7 @@ import CreateEditBiodat from "../Pages/createEditBiodat/CreateEditBiodat";
 import CardForm from "../Pages/Biodata/CardForm";
 import Biodata from "../Pages/Biodata/Biodata";
 import BiodataDetail from "../Pages/Biodata/BiodataDetail";
+import About from "../Pages/About/About";
 
 
 
@@ -38,11 +39,15 @@ import BiodataDetail from "../Pages/Biodata/BiodataDetail";
     {
       path: '/biodata',
       element: <Biodata> </Biodata>
-      // element: <CardForm></CardForm>
+
   },
   {
     path: '/biodata/:id',
     element: <BiodataDetail></BiodataDetail>
+  },
+  {
+    path: '/about',
+    element: <About></About>
   },
   
       ]
