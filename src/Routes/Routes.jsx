@@ -8,7 +8,10 @@ import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 import Biodata from "../Pages/Biodata/Biodata";
 import PrivateRoute from "./PrivateRoute";
-import Dashboard from "../Pages/Dashboard/Dashboard";
+import Dashboard from "../Layout/Dashboard";
+import CreateBiodata from "../Pages/Dashboard/CreateBiodata/CreateBiodata";
+import CreateEditBiodat from "../Pages/createEditBiodat/CreateEditBiodat";
+
 
 
 
@@ -33,10 +36,17 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
       path: '/biodata',
       element: <PrivateRoute> <Biodata> </Biodata></PrivateRoute>
   },
-  {
-    path: '/dashbord',
-    element: <Dashboard></Dashboard>
-}
+  
       ]
     },
+    {
+      path:'dashboard',
+      element: <PrivateRoute> <Dashboard></Dashboard> </PrivateRoute>,
+      children: [
+       {  
+        path: "create_edit_biodata",
+         element: <CreateEditBiodat></CreateEditBiodat>
+        }
+      ]
+    }
   ]);
