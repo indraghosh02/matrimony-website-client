@@ -1,5 +1,6 @@
 // CardForm.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CardForm = ({ biodata }) => {
     return (
@@ -16,9 +17,9 @@ const CardForm = ({ biodata }) => {
                 </div>
             </div>
             <div className="px-6 py-4">
-                <button className="bg-red-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <Link to={`/biodata/${biodata._id}`} className="btn bg-red-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     View Profile
-                </button>
+                </Link>
             </div>
         </div>
     );
