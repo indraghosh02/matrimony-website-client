@@ -1,0 +1,52 @@
+
+
+.slide {
+    color: blue;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  
+    
+
+  }
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  
+  .text-content {
+    text-align: center; 
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0.6); /* Add a semi-transparent background for readability */
+    padding: 20px; /* Padding around the text */
+    border-radius: 10px;
+
+     /* Rounded corners for aesthetics */
+  }
+  
+  .slide1 {
+    background-image: url("https://i.ibb.co/zGLsBs3/bearded-man-his-lovely-bride-pose-snow-magic-winter-forest.jpg");
+  }
+  
+  .slide2 {
+    background-image: url("https://i.ibb.co/hZLWq0R/affectionate-indian-couple-celebrating-propose-day-together.jpg");
+  }
+  
+  .slide3 {
+    background-image: url("https://i.ibb.co/DQqwD45/young-romantic-couple-relaxing-beach-watching-sunset.jpg");
+  }
+  
+  .slide4 {
+    background-image: url("https://i.ibb.co/kBHdmr0/couple-boat.jpg");
+  }
+  
