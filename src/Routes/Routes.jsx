@@ -18,6 +18,7 @@ import About from "../Pages/About/About";
 import Favourite from "../Component/DashboardComponents/Favourite";
 import ViewBiodata from "../Component/DashboardComponents/ViewBiodata";
 import GotMarried from "../Component/DashboardComponents/GotMarried";
+import ContactUs from "../Pages/ContactUs/ContactUs";
 
 
 
@@ -51,6 +52,10 @@ import GotMarried from "../Component/DashboardComponents/GotMarried";
   {
     path: '/about',
     element: <About></About>
+  },
+  {
+    path: '/contact',
+    element: <ContactUs></ContactUs>
   },
   
       ]
