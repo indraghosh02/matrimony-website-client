@@ -16,6 +16,7 @@ const MarriageReview = () => {
     return (
        <div className='mt-16'>
          <h2 className='text-4xl font-bold mb-4 text-center text-red-600 font-serif'>Our Success Stories</h2>
+         <p className="text-center">At Love Line, we cherish the beautiful journeys of love we've nurtured. Discover how we've helped <br /> countless couples find their perfect match and start their happily ever after</p>
         <div className='flex p-10'>
             <div className='grid lg:grid-cols-3 gap-4'>
                 {data && data.map(review => (
