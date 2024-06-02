@@ -17,6 +17,7 @@ import BiodataDetail from "../Pages/Biodata/BiodataDetail";
 import About from "../Pages/About/About";
 import Favourite from "../Component/DashboardComponents/Favourite";
 import ViewBiodata from "../Component/DashboardComponents/ViewBiodata";
+import GotMarried from "../Component/DashboardComponents/GotMarried";
 
 
 
@@ -70,7 +71,11 @@ import ViewBiodata from "../Component/DashboardComponents/ViewBiodata";
         {  
         path: "favorites_biodata",
          element:<Favourite></Favourite>
-        }
+        },
+        {  
+          path: "got_married",
+           element:<GotMarried></GotMarried>
+          }
       ]
     }
   ]);

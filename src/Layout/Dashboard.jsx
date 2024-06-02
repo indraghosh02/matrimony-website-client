@@ -27,6 +27,7 @@ const Dashboard = () => {
           <NavLink to="/dashboard/view_biodata" className="block px-4 py-2 text-sm rounded hover:bg-blue-700">View Biodata</NavLink>
           <Link to="/dashboard/my_contact_requests" className="block px-4 py-2 text-sm rounded hover:bg-blue-700">My Contact Request</Link>
           <Link to="/dashboard/favorites_biodata" className="block px-4 py-2 text-sm rounded hover:bg-blue-700">My Favorites Biodatas</Link>
+          <Link to="/dashboard/got_married" className="block px-4 py-2 text-sm rounded hover:bg-blue-700">Got Married</Link>
           <button onClick={handleLogout} className="block text-sm text-white px-4 py-2 rounded hover:bg-blue-700">Logout</button>
         </nav>
       </div>
