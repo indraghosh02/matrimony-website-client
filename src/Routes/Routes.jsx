@@ -15,6 +15,8 @@ import CardForm from "../Pages/Biodata/CardForm";
 import Biodata from "../Pages/Biodata/Biodata";
 import BiodataDetail from "../Pages/Biodata/BiodataDetail";
 import About from "../Pages/About/About";
+import Favourite from "../Component/DashboardComponents/Favourite";
+import ViewBiodata from "../Component/DashboardComponents/ViewBiodata";
 
 
 
@@ -59,6 +61,15 @@ import About from "../Pages/About/About";
        {  
         path: "create_edit_biodata",
          element: <CreateEditBiodat></CreateEditBiodat>
+        },
+        
+        {  
+        path: "view_biodata",
+         element: <ViewBiodata></ViewBiodata>
+        },
+        {  
+        path: "favorites_biodata",
+         element:<Favourite></Favourite>
         }
       ]
     }
