@@ -1,15 +1,109 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
+
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const UserBiodata = () => {
     const { user } = useContext(AuthContext);
     const [biodata, setBiodata] = useState(null);
-    const [selectedImage, setSelectedImage] = useState(null);
+ 
+    const navigate = useNavigate();
 
-    const handleImageChange = (e) => {
-      setSelectedImage(URL.createObjectURL(e.target.files[0]));
+    
+
+    const handleUpdateBiodata = async (event) => {
+      event.preventDefault();
+      const form = event.target;
+      const type = form.type.value;
+      const name = form.name.value;
+      const imageFile = form.image.value; // Get the file object
+      const date = form.date.value;
+      const height = form.height.value;
+      const weight = form.weight.value;
+      const age = form.age.value;
+      const occupation = form.occupation.value;
+      const race = form.race.value;
+      const fName = form.father_name.value;
+      const mName = form.mother_name.value;
+      const permanentDivision = form.permanent.value;
+      const presentDivision = form.present.value;
+      const partnerAge = form.expected_partner_age.value;
+      const partnerHeight = form.expected_partner_height.value;
+      const partnerWeight = form.expected_partner_weight.value;
+      const email = form.email.value;
+      const number = form.number.value;
+  
+      let image = '';
+      if (imageFile) {
+        const formData = new FormData();
+        formData.append('image', imageFile);
+  
+        const response = await fetch(image_hosting_api, {
+          method: 'POST',
+          body: formData,
+        });
+        const data = await response.json();
+        image = data.data.url;
+      }
+  
+      const updatedBiodata = {
+        type,
+        name,
+        image,
+        date,
+        height,
+        weight,
+        age,
+        occupation,
+        race,
+        fName,
+        mName,
+        permanentDivision,
+        presentDivision,
+        partnerAge,
+        partnerHeight,
+        partnerWeight,
+        email,
+        number,
+      };
+      console.log(updatedBiodata);
+  
+      // send data to server
+      fetch(`http://localhost:5000/biodata/${biodata._id}`, {
+          method: 'PUT',
+          headers: {
+              'content-type' : 'application/json'
+          },
+          body: JSON.stringify(updatedBiodata)
+      })
+      .then(res => res.json())
+      .then(data => {
+          console.log(data);
+          if(data.modifiedCount > 0){
+              // show success popup
+             
+              Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: `  Biodata updated successfully`,
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+                .then(() => {
+                  // Navigate to "/dashboard/view_biodata" route
+                  navigate("/dashboard/view_biodata")
+              });
+               
+          }
+      })
+      
     };
+  
  
     const divisions = ["Dhaka", "Chattagram", "Rangpur", "Barisal", "Khulna", "Maymansign", "Sylhet"];
 
@@ -36,58 +130,12 @@ const UserBiodata = () => {
         <div>
             
             {biodata ? (
-                
-            //    <div className="p-6">
-            //     <h2 className="text-center text-4xl text-white bg-blue-700 font-serif font-bold pt-4">Your Biodata</h2>
-            //    <div className="min-h-screen flex items-center justify-center bg-blue-700  p-6">
-            //      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-4xl">
-            //        <h2 className="text-4xl font-bold mb-4 text-center font-serif text-red-600 pb-4">{biodata.name}'s Biodata</h2>
-            //        <div className="flex flex-col lg:flex-row items-center lg:items-start">
-            //          <img className="w-48 h-48 rounded-full mx-auto lg:mx-0 lg:mr-8" src={biodata.image} alt="Profile" />
-            //          <div className="mt-6 lg:mt-0">
-            //            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            //              <p><strong>Gender:</strong> {biodata.type}</p>
-            //              <p><strong>Date of Birth:</strong> {biodata.date}</p>
-            //              <p><strong>Height:</strong> {biodata.height}</p>
-            //              <p><strong>Weight:</strong> {biodata.weight}</p>
-            //              <p><strong>Age:</strong> {biodata.age}</p>
-            //              <p><strong>Occupation:</strong> {biodata.occupation}</p>
-            //              <p><strong>Race:</strong> {biodata.race}</p>
-            //              <p><strong>Father's Name:</strong> {biodata.fName}</p>
-            //              <p><strong>Mother's Name:</strong> {biodata.mName}</p>
-            //              <p><strong>Permanent Division:</strong> {biodata.permanentDivision}</p>
-            //              <p><strong>Present Division:</strong> {biodata.presentDivision}</p>
-            //              <p><strong>Expected Partner Age:</strong> {biodata.partnerAge}</p>
-            //              <p><strong>Expected Partner Height:</strong> {biodata.partnerHeight}</p>
-            //              <p><strong>Expected Partner Weight:</strong> {biodata.partnerWeight}</p>
-            //              <p><strong>Contact Email:</strong> {biodata.email}</p>
-            //              <p><strong>Mobile Number:</strong> {biodata.number}</p>
-            //              <div className="flex justify-center gap-4">
-            //               <button 
-            //                  className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105 shadow-lg"
-                            
-            //                >
-            //                 Edit
-            //                </button>
-                         
-            //              </div>
-            //            </div>
-            //          </div>
-            //        </div>
-            //      </div>
-            //    </div>
-         
-             
-            //  </div>
-
-
-
 
             <div className="flex items-center justify-center min-h-screen bg-slate-100 p-4">
  
             <div className="w-full max-w-3xl p-8 space-y-6 bg-white rounded-lg shadow-md">
               <h2 className="text-4xl font-serif font-bold text-center text-blue-600">Edit Your Biodata</h2>
-              <form  className="space-y-4">
+              <form onSubmit={handleUpdateBiodata}  className="space-y-4">
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div>
                     <label className="block text-sm font-medium text-gray-700">Biodata Type</label>
@@ -122,14 +170,14 @@ const UserBiodata = () => {
                     <label htmlFor="image" className="block text-sm font-medium text-gray-700">
                       Profile Image
                     </label>
-                    {/* <input
-                      type="file"
+                    <input
+                      type="text"
                       id="image"
                       name="image"
                       defaultValue={biodata.image}
                       className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-                    /> */}
-                    <input
+                    />
+                    {/* <input
                 type="file"
                 id="image"
                 name="image"
@@ -140,7 +188,7 @@ const UserBiodata = () => {
                 <img src={selectedImage} alt="Selected" className="mt-4 h-32 w-32 object-cover" />
               ) : (
                 <img src={biodata.image} alt="Current" className="mt-4 h-32 w-32 object-cover" />
-              )}
+              )} */}
                   </div>
                   <div>
                     <label htmlFor="date" className="block text-sm font-medium text-gray-700">
