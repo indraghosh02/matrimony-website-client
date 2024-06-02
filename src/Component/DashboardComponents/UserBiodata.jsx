@@ -31,8 +31,8 @@ const UserBiodata = () => {
             {biodata ? (
                 
                <div className="p-6">
-                <h2 className="text-center text-4xl text-blue-700 font-bold">Your Biodata</h2>
-               <div className="min-h-screen flex items-center justify-center bg-red-600 p-6">
+                <h2 className="text-center text-4xl text-white bg-blue-700 font-serif font-bold pt-4">Your Biodata</h2>
+               <div className="min-h-screen flex items-center justify-center bg-blue-700  p-6">
                  <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-4xl">
                    <h2 className="text-4xl font-bold mb-4 text-center font-serif text-red-600 pb-4">{biodata.name}'s Biodata</h2>
                    <div className="flex flex-col lg:flex-row items-center lg:items-start">
