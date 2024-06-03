@@ -21,6 +21,7 @@ import GotMarried from "../Component/DashboardComponents/GotMarried";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import ManageUsers from "../Component/DashboardComponents/ManageUsers";
 import DashboardHome from "../Component/DashboardComponents/DashboardHome";
+import AdminDashboard from "../Component/DashboardComponents/AdminDashboard";
 
 
 
@@ -90,7 +91,11 @@ import DashboardHome from "../Component/DashboardComponents/DashboardHome";
           {  
             path: "manage",
              element:<ManageUsers></ManageUsers>
-            }
+            },
+            {  
+              path: "dashboard",
+               element:<AdminDashboard></AdminDashboard>
+              }
       ]
     }
   ]);

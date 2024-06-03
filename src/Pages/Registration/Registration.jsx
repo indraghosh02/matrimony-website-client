@@ -6,12 +6,16 @@ import Swal from "sweetalert2";
 
 
 const Registration = () => {
-    const {createUser} = useContext(AuthContext)
+    const {createUser, updateUserProfile} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm(); 
     const onSubmit = data => {
         console.log(data);
-        createUser(data.email, data.password)
+        createUser(data.email, data.password, data.name, data.photo)
         .then(result => {
+          updateUserProfile(data.name, data.photo)
+          // .then(() => {
+
+          // })
             const loggedUser = result.user;
             console.log(loggedUser);
             Swal.fire({
