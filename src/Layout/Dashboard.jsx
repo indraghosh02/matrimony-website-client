@@ -3,14 +3,21 @@ import { Link, NavLink, Outlet } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useRole from '../hooks/useRole';
+import HostMenu from '../Component/DashboardComponents/HostMenu';
+import AdminMenu from '../Component/DashboardComponents/AdminMenu';
 const Dashboard = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [role, isLoading ] = useRole()
+  console.log(role, isLoading);
 
-  const handleLogout = () => {
-    logOut()
-      .then(() => {})
-      .catch(error => console.log(error));
-  };
+  // const handleLogout = () => {
+  //   logOut()
+  //     .then(() => {})
+  //     .catch(error => console.log(error));
+  // };
+
+  
 
   return (
 
@@ -22,13 +29,20 @@ const Dashboard = () => {
           Dashboard
         </div>
         <nav className="flex-1 px-2 py-4 space-y-2">
-          <NavLink to="/" className="block px-4 py-2 text-sm rounded hover:bg-blue-700">Home</NavLink>
+          {/* <NavLink to="/" className="block px-4 py-2 text-sm rounded hover:bg-blue-700">Home</NavLink>
+          
+          <NavLink to="/dashboard/manage" className="block px-4 py-2 text-sm rounded hover:bg-blue-700"> Manage Users</NavLink> */}
+          
+          {role === 'user' &&  <HostMenu></HostMenu>}
+          {role === 'admin' &&  <AdminMenu></AdminMenu>}
+          {/* user */}
+          {/* <NavLink to="/" className="block px-4 py-2 text-sm rounded hover:bg-blue-700">Home</NavLink>
           <NavLink to="/dashboard/create_edit_biodata" className="block px-4 py-2 text-sm rounded hover:bg-blue-700">Create/Edit Biodata</NavLink>
           <NavLink to="/dashboard/view_biodata" className="block px-4 py-2 text-sm rounded hover:bg-blue-700">View Biodata</NavLink>
           <Link to="/dashboard/my_contact_requests" className="block px-4 py-2 text-sm rounded hover:bg-blue-700">My Contact Request</Link>
           <Link to="/dashboard/favorites_biodata" className="block px-4 py-2 text-sm rounded hover:bg-blue-700">My Favorites Biodatas</Link>
           <Link to="/dashboard/got_married" className="block px-4 py-2 text-sm rounded hover:bg-blue-700">Got Married</Link>
-          <button onClick={handleLogout} className="block text-sm text-white px-4 py-2 rounded hover:bg-blue-700">Logout</button>
+          <button onClick={handleLogout} className="block text-sm text-white px-4 py-2 rounded hover:bg-blue-700">Logout</button> */}
         </nav>
       </div>
 

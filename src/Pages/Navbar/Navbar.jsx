@@ -1,9 +1,12 @@
 import { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+// import useRole from '../../hooks/useRole';
 
 const Navbar = () => {
    const {user , logOut} = useContext(AuthContext);
+  //  const [role, isLoading ] = useRole()
+  //  console.log(role, isLoading);
 
    const handleLogout = () =>{
     logOut()
@@ -23,8 +26,9 @@ const Navbar = () => {
       
       {
         user ? <>
+        
         {/* <button onClick={handleLogout} className="bg-red-600 text-white  px-4 py-2 rounded hover:bg-blue-600" >Logout</button> */}
-        <NavLink to="/dashboard/create_edit_biodata" className="bg-red-600 text-white  px-4 py-2 rounded hover:bg-blue-600">dashboard</NavLink>
+        <NavLink to="/dashboard/dashboard_profile" className="bg-red-600 text-white  px-4 py-2 rounded hover:bg-blue-600">dashboard</NavLink>
         </> :  
         <>
         <NavLink to="/login" className="bg-red-600 text-white  px-4 py-2 rounded hover:bg-blue-600">Login</NavLink>

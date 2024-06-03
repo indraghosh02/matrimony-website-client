@@ -21,7 +21,7 @@ const UserBiodata = () => {
       const form = event.target;
       const type = form.type.value;
       const name = form.name.value;
-      const imageFile = form.image.value; // Get the file object
+      const imageFile = form.image.value; 
       const date = form.date.value;
       const height = form.height.value;
       const weight = form.weight.value;

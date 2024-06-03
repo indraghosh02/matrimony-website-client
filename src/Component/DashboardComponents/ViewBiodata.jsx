@@ -1,10 +1,36 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 
 const ViewBiodata = () => {
     const { user } = useContext(AuthContext);
     const [biodata, setBiodata] = useState(null);
+
+    const handlePremium = async () =>{
+      console.log('want to be a host');
+      try{
+        const currentUser = {
+          email: user?.email,
+          role: 'user',
+          isPremium: false,
+          status: 'Requested'
+      }
+      const {data} = await axios.put(`http://localhost:5000/user`,currentUser )
+      console.log(data);
+      if(data.modifiedCount > 0){
+        toast.success('success! wait for admin approval')
+      }
+      else{
+        toast.success(' wait for admin approval')
+      }
+      }
+      catch(err){
+        console.log(err);
+        toast.error(err.message)
+      }
+    }
 
     useEffect(() => {
         if (user) {
@@ -56,7 +82,7 @@ const ViewBiodata = () => {
                          <p><strong>Contact Email:</strong> {biodata.email}</p>
                          <p><strong>Mobile Number:</strong> {biodata.number}</p>
                          <div className="flex justify-center gap-4">
-                          <button 
+                          <button onClick={handlePremium}
                              className="bg-yellow-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105 shadow-lg"
                             
                            >

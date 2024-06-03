@@ -19,6 +19,8 @@ import Favourite from "../Component/DashboardComponents/Favourite";
 import ViewBiodata from "../Component/DashboardComponents/ViewBiodata";
 import GotMarried from "../Component/DashboardComponents/GotMarried";
 import ContactUs from "../Pages/ContactUs/ContactUs";
+import ManageUsers from "../Component/DashboardComponents/ManageUsers";
+import DashboardHome from "../Component/DashboardComponents/DashboardHome";
 
 
 
@@ -64,6 +66,10 @@ import ContactUs from "../Pages/ContactUs/ContactUs";
       path:'dashboard',
       element: <PrivateRoute> <Dashboard></Dashboard> </PrivateRoute>,
       children: [
+        {  
+          path: "dashboard_profile",
+           element: <DashboardHome></DashboardHome>
+          },
        {  
         path: "create_edit_biodata",
          element: <CreateEditBiodat></CreateEditBiodat>
@@ -80,7 +86,11 @@ import ContactUs from "../Pages/ContactUs/ContactUs";
         {  
           path: "got_married",
            element:<GotMarried></GotMarried>
-          }
+          },
+          {  
+            path: "manage",
+             element:<ManageUsers></ManageUsers>
+            }
       ]
     }
   ]);
