@@ -6,29 +6,54 @@ import Swal from "sweetalert2";
 
 
 const Registration = () => {
-    const {createUser, updateUserProfile} = useContext(AuthContext)
+    const {createUser, updateUserProfile,saveUser } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm(); 
-    const onSubmit = data => {
-        console.log(data);
-        createUser(data.email, data.password, data.name, data.photo)
-        .then(result => {
-          updateUserProfile(data.name, data.photo)
-          // .then(() => {
+    // const onSubmit = data => {
+    //     console.log(data);
+    //     createUser(data.email, data.password, data.name, data.photo)
+    //     .then(result => {
+    //       updateUserProfile(data.name, data.photo)
+    //       // .then(() => {
 
-          // })
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            Swal.fire({
-                title: 'Registration Successful.',
-                showClass: {
-                    popup: 'animate__animated animate__fadeInDown'
-                },
-                hideClass: {
-                    popup: 'animate__animated animate__fadeOutUp'
-                }
-            });
-        })
-    };
+    //       // })
+    //         const loggedUser = result.user;
+    //         console.log(loggedUser);
+    //         Swal.fire({
+    //             title: 'Registration Successful.',
+    //             showClass: {
+    //                 popup: 'animate__animated animate__fadeInDown'
+    //             },
+    //             hideClass: {
+    //                 popup: 'animate__animated animate__fadeOutUp'
+    //             }
+    //         });
+    //     })
+    // };
+
+    const onSubmit = async data => {
+      console.log(data);
+      try {
+          const result = await createUser(data.email, data.password);
+          await updateUserProfile(data.name, data.photo);
+          const loggedUser = result.user;
+          console.log(loggedUser);
+          // Save user after profile update
+          await saveUser(loggedUser);
+          Swal.fire({
+              title: 'Registration Successful.',
+              showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+              }
+          });
+      } catch (error) {
+          console.error("Error during registration:", error);
+      }
+  };
+
+
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -86,14 +111,14 @@ const Registration = () => {
                                 {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
               </div>
               <div>
-                <label htmlFor="photo-url" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="photo" className="block text-sm font-medium text-gray-700">
                   Photo URL
                 </label>
                 <input
                   type="text"
-                  id="photo-url"
-                  {...register("photo-url")}
-                  name="photo-url"
+                  id="photo"
+                  {...register("photo")}
+                  name="photo"
                   required
                   className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                 />

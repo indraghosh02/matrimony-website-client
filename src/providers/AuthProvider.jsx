@@ -17,6 +17,12 @@ const AuthProvider = ({ children }) => {
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
+
+        .then((userCredential) => {
+            setLoading(false);
+            return userCredential;
+        });
+
     }
 
     const signIn = (email, password) => {
@@ -34,32 +40,38 @@ const AuthProvider = ({ children }) => {
     }
 
     const updateUserProfile = (name, photo) => {
+
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
+
         });
     }
  
     // new
-    const saveUser = async user=>{
+    const saveUser = async (user)=>{
+        console.log(user);
+        
+    
         const currentUser = {
             name: user?.displayName,
             email: user?.email,
             role: 'user',
-         
             isPremium: false,
             status: 'verified'
         }
+        console.log(currentUser)
         const {data} = await axios.put(`http://localhost:5000/user`,currentUser )
-        return data
+        return data;
     }
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            if(currentUser) {
-                saveUser(currentUser)
-            }
             console.log('current user', currentUser);
+            // if(currentUser) {
+            //     saveUser(currentUser)
+            // }
+            // console.log('current user', currentUser);
             setLoading(false);
         });
         return () => {
@@ -74,7 +86,8 @@ const AuthProvider = ({ children }) => {
         signIn,
         googleSignIn,
         logOut,
-        updateUserProfile
+        updateUserProfile,
+        saveUser
     }
 
     return (

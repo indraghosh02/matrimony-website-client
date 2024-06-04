@@ -1,62 +1,36 @@
 import React, { useState } from 'react';
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import CardForm from "./CardForm";
+import CardForm from './CardForm';
+import Filter from './Filter';
+
 
 const FilterBiodata = () => {
     const axiosSecure = useAxiosPublic();
-    const [filters, setFilters] = useState({
-        ageRange: "", // Initial age range filter
-        biodataType: "", // Initial biodata type filter
-        division: "" // Initial division filter
-    });
+    const [filters, setFilters] = useState({});
 
     const { data } = useQuery({
-        queryKey: ['biodata', filters], // Include filters in queryKey to trigger re-fetch on filter change
+        queryKey: ['biodata', filters],
         queryFn: async () => {
-            const { data } = await axiosSecure.get('/biodata', { params: filters }); // Pass filters as query parameters
+            const { data } = await axiosSecure.get('/biodata/filter', {
+                params: filters
+            });
             return data;
-        }
+        },
+        enabled: Object.keys(filters).length > 0 // Only run the query if filters is not empty
     });
 
-    const handleFilterChange = (filterName, value) => {
-        setFilters(prevFilters => ({
-            ...prevFilters,
-            [filterName]: value
-        }));
+    const handleFilter = (newFilters) => {
+        setFilters(newFilters);
     };
 
     return (
         <div className='flex p-10'>
-            <div className='w-1/3'>
-              
+            <div className='w-1/2'>
+                <Filter onFilter={handleFilter} />
             </div>
             <div className='flex flex-col items-center justify-center p-6'>
                 <h2 className='text-3xl font-bold mb-4 text-red-600 font-serif'>All Biodatas</h2>
-                {/* Filter section */}
-                <div className="flex justify-center mb-4">
-                    {/* Age range filter */}
-                    <input type="number" value={filters.ageRange.min} onChange={e => handleFilterChange('ageRange', { ...filters.ageRange, min: parseInt(e.target.value) })} />
-                    <input type="number" value={filters.ageRange.max} onChange={e => handleFilterChange('ageRange', { ...filters.ageRange, max: parseInt(e.target.value) })} />
-                    {/* Biodata type filter */}
-                    <select value={filters.biodataType} onChange={e => handleFilterChange('biodataType', e.target.value)}>
-                        <option value="">All</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                    {/* Division filter */}
-                    <select value={filters.division} onChange={e => handleFilterChange('division', e.target.value)}>
-                        <option value="">All</option>
-                        <option value="Dhaka">Dhaka</option>
-                        <option value="Chattagram">Chattagram</option>
-                        <option value="Rangpur">Rangpur</option>
-                        <option value="Barisal">Barisal</option>
-                        <option value="Khulna">Khulna</option>
-                        <option value="Maymansign">Maymansign</option>
-                        <option value="Sylhet">Sylhet</option>
-                    </select>
-                </div>
-                {/* Biodata cards */}
                 <div className='grid grid-cols-3 gap-10'>
                     {data && data.map(biodata => (
                         <CardForm key={biodata._id} biodata={biodata} />
@@ -66,5 +40,6 @@ const FilterBiodata = () => {
         </div>
     );
 };
+
 
 export default FilterBiodata;

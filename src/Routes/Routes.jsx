@@ -22,6 +22,8 @@ import ContactUs from "../Pages/ContactUs/ContactUs";
 import ManageUsers from "../Component/DashboardComponents/ManageUsers";
 import DashboardHome from "../Component/DashboardComponents/DashboardHome";
 import AdminDashboard from "../Component/DashboardComponents/AdminDashboard";
+import SuccessStories from "../Component/DashboardComponents/SuccessStories";
+import Checkout from "../Pages/Biodata/CheckoutForm";
 
 
 
@@ -50,7 +52,13 @@ import AdminDashboard from "../Component/DashboardComponents/AdminDashboard";
   },
   {
     path: '/biodata/:id',
-    element: <BiodataDetail></BiodataDetail>
+    element: <PrivateRoute>  <BiodataDetail></BiodataDetail> </PrivateRoute> 
+  },
+  {
+
+      path: '/checkout/:biodataId',
+      element: <PrivateRoute> <Checkout></Checkout> </PrivateRoute>
+    
   },
   {
     path: '/about',
@@ -95,7 +103,11 @@ import AdminDashboard from "../Component/DashboardComponents/AdminDashboard";
             {  
               path: "dashboard",
                element:<AdminDashboard></AdminDashboard>
-              }
+              },
+              {  
+                path: "success_stories",
+                 element:<SuccessStories></SuccessStories>
+                }
       ]
     }
   ]);

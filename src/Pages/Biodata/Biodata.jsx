@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import CardForm from "./CardForm";
 import FilterBiodata from './FilterBiodata';
+import Filter from './Filter';
 
 const Biodata = () => {
     const axiosSecure = useAxiosPublic();
