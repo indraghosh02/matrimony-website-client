@@ -22,8 +22,8 @@ const SuccessStories = () => {
 
   return (
     <div className='mt-16'>
-      <h2 className='text-4xl font-bold mb-4 text-center text-red-600 font-serif'>Our Success Stories</h2>
-      <p className="text-center">At Love Line, we cherish the beautiful journeys of love we've nurtured. Discover how we've helped countless couples find their perfect match and start their happily ever after.</p>
+      <h2 className='text-4xl font-bold  text-center text-blue-600 font-serif'>Success Stories</h2>
+
       
       <div className='container mx-auto px-4 sm:px-8'>
         <div className='py-8'>

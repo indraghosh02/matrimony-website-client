@@ -23,8 +23,8 @@ const Slider = () => {
                 <p className="text-white font-semibold text-2xl">Navigate the wonderful matrimonial journey with Love-Link,
 the leading matrimony site </p>
 <br />
-                <Link to="/slide4">
-                  <button className="bg-red-600 text-white px-4 py-2 rounded ">See Biodata</button>
+                <Link to="/biodata">
+                  <button className="bg-red-600 text-white px-4 py-2 rounded ">See All Biodatas</button>
                 </Link>
               </div>
             </div>
@@ -38,8 +38,8 @@ the leading matrimony site </p>
                 <p className="text-white font-semibold text-2xl">Navigate the wonderful matrimonial journey with Love-Link,
 the leading matrimony site </p>
 <br />
-                <Link to="/slide4">
-                  <button className="bg-red-600 text-white px-4 py-2 rounded ">See Biodata</button>
+                <Link to="/biodata">
+                  <button className="bg-red-600 text-white px-4 py-2 rounded ">See All Biodatas</button>
                 </Link>
               </div>
             </div>
@@ -53,8 +53,8 @@ the leading matrimony site </p>
                 <p className="text-white font-semibold text-2xl">Navigate the wonderful matrimonial journey with Love-Link,
 the leading matrimony site </p>
 <br />
-                <Link to="/slide4">
-                  <button className="bg-red-600 text-white px-4 py-2 rounded ">See Biodata</button>
+                <Link to="/biodata">
+                  <button className="bg-red-600 text-white px-4 py-2 rounded ">See All Biodatas</button>
                 </Link>
               </div>
             </div>
@@ -68,8 +68,8 @@ the leading matrimony site </p>
                 <p className="text-white font-semibold text-2xl">Navigate the wonderful matrimonial journey with Love-Link,
 the leading matrimony site </p>
 <br />
-                <Link to="/slide4">
-                  <button className="bg-red-600 text-white px-4 py-2 rounded ">See Biodata</button>
+                <Link to="/biodata">
+                  <button className="bg-red-600 text-white px-4 py-2 rounded ">See All Biodatas</button>
                 </Link>
               </div>
             </div>

@@ -35,7 +35,7 @@ const PremiumApproval = () => {
 
     return (
         <div>
-            <h2 className='font-extrabold font-serif text-2xl text-center text-blue-600'>Premium Approval Requests</h2>
+            <h2 className='font-extrabold font-serif text-2xl text-center text-blue-600'>Premium BioData Approval Requests</h2>
 
 
             <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import usePremium from '../../hooks/usePremium';
 
 const PremiumBiodataDetail = () => {
   const { id } = useParams();
   const [biodata, setBiodata] = useState(null);
-
+  const [isPremium, isLoading ] = usePremium()
   useEffect(() => {
     const fetchBiodataDetails = async () => {
       try {
@@ -75,8 +76,15 @@ const PremiumBiodataDetail = () => {
                 <p><strong>Partner's Age:</strong> {biodata.biodata.partnerAge}</p>
                 <p><strong>Partner's Height:</strong> {biodata.biodata.partnerHeight}</p>
                 <p><strong>Partner's Weight:</strong> {biodata.biodata.partnerWeight}</p>
-                <p><strong>Email:</strong> {biodata.email}</p>
-                <p><strong>Phone Number:</strong> {biodata.biodata.number}</p>
+                {
+                  isPremium && 
+                  <div>
+                  <p><strong>Email:</strong> {biodata.email}</p>
+                  <p><strong>Phone Number:</strong> {biodata.biodata.number}</p>
+                  </div>
+                
+                }
+               
               </div>
             </div>
             <div className="mt-6 flex justify-center">

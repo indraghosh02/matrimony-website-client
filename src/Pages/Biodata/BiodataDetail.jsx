@@ -4,6 +4,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../providers/AuthProvider';
 import { toast } from 'react-toastify';
+import usePremium from '../../hooks/usePremium';
 
 const BiodataDetail = () => {
   const { id } = useParams();
@@ -13,6 +14,8 @@ const BiodataDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { user } = useContext(AuthContext);
+
+  const [isPremium, isLoading ] = usePremium()
 
   useEffect(() => {
     const fetchBiodata = async () => {
@@ -92,8 +95,13 @@ const BiodataDetail = () => {
                 <p><strong>Partner's Age:</strong> {biodata.partnerAge}</p>
                 <p><strong>Partner's Height:</strong> {biodata.partnerHeight}</p>
                 <p><strong>Partner's Weight:</strong> {biodata.partnerWeight}</p>
+
+                {isPremium  &&   <div>
                 <p><strong>Email:</strong> {biodata.email}</p>
                 <p><strong>Phone Number:</strong> {biodata.number}</p>
+                </div>
+                 }
+              
               </div>
             </div>
             <div className="mt-6 flex justify-center">
@@ -103,12 +111,15 @@ const BiodataDetail = () => {
               >
                 Add to Favourites
               </button>
-              <button
+              {
+                !isPremium  &&  <button
                 className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105 shadow-lg"
                 onClick={handleRequestContact}
               >
                 Request for Contact Information
               </button>
+              }
+             
             </div>
           </div>
         </div>
