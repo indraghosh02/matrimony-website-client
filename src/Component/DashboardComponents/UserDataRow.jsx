@@ -11,7 +11,7 @@ const UserDataRow = ({ user, refetch }) => {
   const [isOpen, setIsOpen] = useState(false)
   const axiosPublic = useAxiosPublic()
 
-  const { mutateAsync } = useMutation({
+  const { mutateAsync: makeAdmin } = useMutation({
     mutationFn: async (updatedUser) => {
       const { data } = await axiosPublic.patch(`/users/update/${user.email}`, updatedUser)
       return data
@@ -27,15 +27,37 @@ const UserDataRow = ({ user, refetch }) => {
     }
   })
 
-  // Modal handler
-  const modalHandler = async () => {
-    const updatedUser = { role: "admin" }
+  const { mutateAsync: makePremium } = useMutation({
+    mutationFn: async () => {
+      const { data } = await axiosPublic.patch(`/user/update-premium/${user.email}`)
+      return data
+    },
+    onSuccess: () => {
+      refetch()
+      toast.success('User updated to premium successfully')
+    },
+    onError: (error) => {
+      console.error(error)
+      toast.error('Failed to update user to premium')
+    }
+  })
 
+  const handleMakeAdmin = async () => {
+    const updatedUser = { role: "admin" }
     try {
-      await mutateAsync(updatedUser)
+      await makeAdmin(updatedUser)
     } catch (err) {
       console.error(err)
       toast.error('Failed to update user role')
+    }
+  }
+
+  const handleMakePremium = async () => {
+    try {
+      await makePremium()
+    } catch (err) {
+      console.error(err)
+      toast.error('Failed to update user to premium')
     }
   }
 
@@ -51,16 +73,19 @@ const UserDataRow = ({ user, refetch }) => {
         <p className='text-gray-900 whitespace-no-wrap'>{user?.role}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <button onClick={modalHandler} className='btn bg-green-600 text-white px-4 py-2 rounded hover:bg-blue-600'>
+        <button onClick={handleMakeAdmin} className='btn bg-green-600 text-white px-4 py-2 rounded hover:bg-blue-600'>
           Make Admin
         </button>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <button  className='btn bg-yellow-400 text-black px-4 py-2 rounded hover:bg-blue-600'>
-          Make premium
-        </button>
+        {user.isPremium ? (
+          <span className='text-yellow-600 font-bold'>Premium User</span>
+        ) : (
+          <button onClick={handleMakePremium} className='btn bg-yellow-400 text-black px-4 py-2 rounded hover:bg-blue-600'>
+            Make Premium
+          </button>
+        )}
       </td>
-     
     </tr>
   )
 }

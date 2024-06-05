@@ -24,6 +24,7 @@ import DashboardHome from "../Component/DashboardComponents/DashboardHome";
 import AdminDashboard from "../Component/DashboardComponents/AdminDashboard";
 import SuccessStories from "../Component/DashboardComponents/SuccessStories";
 import Checkout from "../Pages/Biodata/CheckoutForm";
+import PremiumApproval from "../Component/DashboardComponents/PremiumApproval";
 
 
 
@@ -107,7 +108,11 @@ import Checkout from "../Pages/Biodata/CheckoutForm";
               {  
                 path: "success_stories",
                  element:<SuccessStories></SuccessStories>
-                }
+                },
+                {  
+                  path: "approvedPremium",
+                   element:<PremiumApproval></PremiumApproval>
+                  }
       ]
     }
   ]);
