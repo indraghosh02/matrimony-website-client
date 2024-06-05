@@ -25,6 +25,7 @@ import AdminDashboard from "../Component/DashboardComponents/AdminDashboard";
 import SuccessStories from "../Component/DashboardComponents/SuccessStories";
 import Checkout from "../Pages/Biodata/CheckoutForm";
 import PremiumApproval from "../Component/DashboardComponents/PremiumApproval";
+import PremiumBiodataDetail from "../Component/Home/PremiumBiodataDetail";
 
 
 
@@ -61,6 +62,12 @@ import PremiumApproval from "../Component/DashboardComponents/PremiumApproval";
       element: <PrivateRoute> <Checkout></Checkout> </PrivateRoute>
     
   },
+  {
+
+    path: '/premium-requests/:id',
+    element: <PrivateRoute><PremiumBiodataDetail></PremiumBiodataDetail> </PrivateRoute>
+  
+},
   {
     path: '/about',
     element: <About></About>
