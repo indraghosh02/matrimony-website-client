@@ -171,10 +171,11 @@ const BiodataForm = () => {
                 className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               >
                 <option value="">Select Height</option>
-                <option value="4'">4'-4.5'</option>
-                <option value="5'">4.6'-5</option>
-                <option value="6'">5.1'-6'</option>
-                <option value="7'">6'-7'</option>
+                <option value="4'">4'</option>
+                <option value="5'">4.5'</option>
+                <option value="6'">5'</option>
+                <option value="7'">5.5'</option>
+                <option value="7'">6'</option>
               </select>
             </div>
             <div>
@@ -188,10 +189,12 @@ const BiodataForm = () => {
                 className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
               >
                 <option value="">Select Weight</option>
-                <option value="50kg">40kg-50kg</option>
-                <option value="60kg">50kg-60kg</option>
-                <option value="70kg">60kg-70kg</option>
-                <option value="80kg">70kg-80kg</option>
+                <option value="50kg">45kg</option>
+                <option value="60kg">50kg</option>
+                <option value="70kg">60kg</option>
+                <option value="80kg">70kg</option>
+                <option value="80kg">80kg</option>
+                <option value="80kg">80kg+</option>
               </select>
             </div>
           </div>
@@ -224,6 +227,7 @@ const BiodataForm = () => {
                 <option value="Doctor">Doctor</option>
                 <option value="Teacher">Teacher</option>
                 <option value="Businessman">Businessman</option>
+                <option value="serviceHolder">Service Holder</option>
                 <option value="Others">Others</option>
               </select>
             </div>
@@ -330,10 +334,11 @@ const BiodataForm = () => {
               >
                 <option value="">Select Height</option>
                 <option value="">Select Height</option>
-                <option value="4'">4'-4.5'</option>
-                <option value="5'">4.6'-5</option>
-                <option value="6'">5.1'-6'</option>
-                <option value="7'">6'-7'</option>
+                <option value="4'">4'</option>
+                <option value="4'">4.5'</option>
+                <option value="5'">5'</option>
+                <option value="6'">5.5'</option>
+                <option value="7'">6'</option>
               </select>
             </div>
             <div>
@@ -348,10 +353,12 @@ const BiodataForm = () => {
               >
                 <option value="">Select Weight</option>
                 <option value="">Select Weight</option>
-                <option value="50kg">40kg-50kg</option>
-                <option value="60kg">50kg-60kg</option>
-                <option value="70kg">60kg-70kg</option>
-                <option value="80kg">70kg-80kg</option>
+                <option value="50kg">45kg</option>
+                <option value="60kg">50kg</option>
+                <option value="70kg">60kg</option>
+                <option value="80kg">70kg</option>
+                <option value="80kg">80kg</option>
+                <option value="80kg">80kg+</option>
               </select>
             </div>
           </div>
@@ -389,12 +396,7 @@ const BiodataForm = () => {
             >
               Submit
             </button>
-            <button
-              type="reset"
-              className="px-4 py-2 font-medium text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
-            >
-              Reset
-            </button>
+          
           </div>
         </form>
       </div>

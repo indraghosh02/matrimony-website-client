@@ -48,9 +48,28 @@ const BiodataDetail = () => {
     }
   };
 
+  // const handleRequestContact = () => {
+  //   navigate(`/checkout/${biodata.biodataId}`);
+  // };
   const handleRequestContact = () => {
-    navigate(`/checkout/${biodata.biodataId}`);
+    const url = `/checkout/${biodata.biodataId}?name=${encodeURIComponent(biodata.name)}&number=${encodeURIComponent(biodata.number)}`;
+    navigate(url);
   };
+  
+
+  // const handleRequestContact = () => {
+  //   navigate( `/checkout/${biodataId}?name=${encodeURIComponent(name)}&number=${encodeURIComponent(number)}`);
+  // };
+
+  // const handleRequestContact = () => {
+  //   navigate(`/checkout/${biodata.biodataId}`, {
+  //     state: {
+  //       name: biodata.name,
+  //       number: biodata.number
+  //     }
+  //   });
+  // };
+  
 
   const similarBiodata = allBiodata.filter(b => b._id !== id && b.type === biodata.type).slice(0, 3);
 
@@ -104,7 +123,7 @@ const BiodataDetail = () => {
               
               </div>
             </div>
-            <div className="mt-6 flex justify-center">
+            <div className="mt-6 flex justify-center gap-16">
               <button
                 className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105 shadow-lg"
                 onClick={handleAddToFavourites}

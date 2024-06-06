@@ -16,6 +16,14 @@ const AdminDashboard = () => {
         }
     });
 
+	const { data: premiumRequests } = useQuery({
+        queryKey: ['premium-requests'],
+        queryFn: async () => {
+            const { data } = await axiosSecure.get('/premium-requests');
+            return data;
+        }
+    });
+
   
 
 
@@ -23,6 +31,7 @@ const AdminDashboard = () => {
     const [totalBiodata, setTotalBiodata] = useState(0);
     const [maleCount, setMaleCount] = useState(0);
     const [femaleCount, setFemaleCount] = useState(0);
+	const [premiumCount, setPremiumCount] = useState(0);
    
     
     useEffect(() => {
@@ -33,15 +42,19 @@ const AdminDashboard = () => {
             setMaleCount(males.length);
             setFemaleCount(data.length - males.length);
         }
+		if (premiumRequests) {
+            const approvedPremiums = premiumRequests.filter(request => request.status === 'Approved');
+            setPremiumCount(approvedPremiums.length);
+        }
       
-    }, [data]);
+    }, [data, premiumRequests]);
     
     return (
         <div className="lg:ml-24 lg:mr-24">
-                 <h2 className='text-4xl font-bold mb-4 text-center text-blue-600 font-serif'>Total Counts </h2>
+                 <h2 className='text-4xl font-bold mb-4 text-center text-blue-600 font-serif'>Admin Dashboard </h2>
             <section className="p-6 my-6 dark:bg-gray-100 dark:text-gray-800">
 	<div className="container grid grid-cols-1 gap-6 mx-auto ">
-		<div className="flex p-4 space-x-4 rounded-2xl md:space-x-6 bg-yellow-400 dark:text-gray-800">
+		<div className="flex p-4 space-x-4 rounded-2xl md:space-x-6 bg-lime-400 dark:text-gray-800">
 			
 			<div className="flex flex-col justify-center align-middle">
 				<p className="text-4xl font-semibold leading-none"> {totalBiodata}</p>
@@ -63,20 +76,20 @@ const AdminDashboard = () => {
 				<p className="capitalize text-xl">Female Biodatas</p>
 			</div>
 		</div>
-        <div className="flex p-4 space-x-4 rounded-2xl md:space-x-6 bg-fuchsia-500 dark:text-gray-800">
+        <div className="flex p-4 space-x-4 rounded-2xl md:space-x-6 bg-yellow-500 dark:text-gray-800">
 			
 			<div className="flex flex-col justify-center align-middle">
-				<p className="text-4xl font-semibold leading-none"></p>
+				<p className="text-4xl font-semibold leading-none">{premiumCount}</p>
 				<p className="capitalize text-xl">Premium Biodatas</p>
 			</div>
 		</div>
-        <div className="flex p-4 space-x-4 rounded-2xl md:space-x-6 bg-fuchsia-500 dark:text-gray-800">
+        {/* <div className="flex p-4 space-x-4 rounded-2xl md:space-x-6 bg-fuchsia-500 dark:text-gray-800">
 			
 			<div className="flex flex-col justify-center align-middle">
 				<p className="text-4xl font-semibold leading-none"></p>
 				<p className="capitalize text-xl">Total Revenue</p>
 			</div>
-		</div>
+		</div> */}
 		
 	</div>
 </section>

@@ -5,11 +5,14 @@ import { Elements, CardElement, useStripe, useElements } from '@stripe/react-str
 import { AuthContext } from '../../providers/AuthProvider';
 import axios from 'axios';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
+import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 
 const CheckoutForm = () => {
-  const { biodataId } = useParams(); // Use biodataId from params
+  const { biodataId, name, number } = useParams(); 
+  console.log(biodataId, name, number);// Use biodataId from params
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const stripe = useStripe();
@@ -91,16 +94,28 @@ const price = 5;
             console.log('transaction id', paymentIntent.id);
             setTransactionId(paymentIntent.id)
 
+            const info = await axios.get(`http://localhost:5000/info/${biodataId}`);
+            console.log(info.data.name);
+            const name= info.data.name;
+            const number= info.data.number;
+
+
 
         
 
-            // const response = await axios.post('http://localhost:5000/request-contact', {
-            //               biodataId, // Assuming you have biodataId available
-            //               userEmail: user.email,
-            //               price: 5, // Assuming price is fixed for each request
-            //             });
+            const response = await axios.post('http://localhost:5000/request-contact-info', {
+                          biodataId, 
+                          name,
+                          number,
+                          // Assuming you have biodataId available
+                          userEmail: user.email,
+                          price: 5, // Assuming price is fixed for each request
+                        });
+                     Swal.fire("payment SuccessFull")
+                        navigate('/dashboard/my_contact_request')
+                   
+                        console.log(response);
 
-            //             console.log(response);
 
         }
     }

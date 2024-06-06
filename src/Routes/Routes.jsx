@@ -26,6 +26,10 @@ import SuccessStories from "../Component/DashboardComponents/SuccessStories";
 import Checkout from "../Pages/Biodata/CheckoutForm";
 import PremiumApproval from "../Component/DashboardComponents/PremiumApproval";
 import PremiumBiodataDetail from "../Component/Home/PremiumBiodataDetail";
+import AdminRoute from "./AdminRoute";
+import NotFound from "../Pages/NotFound/NotFound";
+import MyContactRequest from "../Component/DashboardComponents/MyContactRequest";
+import ApproveContactRequest from "../Component/DashboardComponents/ApproveContactRequest";
 
 
 
@@ -34,6 +38,7 @@ import PremiumBiodataDetail from "../Component/Home/PremiumBiodataDetail";
     {
       path: "/",
       element: <Main></Main> ,
+      errorElement:<NotFound></NotFound>,
       children : [
         {
             path: '/',
@@ -96,6 +101,10 @@ import PremiumBiodataDetail from "../Component/Home/PremiumBiodataDetail";
         path: "view_biodata",
          element: <ViewBiodata></ViewBiodata>
         },
+        {
+        path: "my_contact_request",
+        element: <MyContactRequest></MyContactRequest>
+       },
         {  
         path: "favorites_biodata",
          element:<Favourite></Favourite>
@@ -106,7 +115,7 @@ import PremiumBiodataDetail from "../Component/Home/PremiumBiodataDetail";
           },
           {  
             path: "manage",
-             element:<ManageUsers></ManageUsers>
+             element: <AdminRoute><ManageUsers></ManageUsers> </AdminRoute>   
             },
             {  
               path: "dashboard",
@@ -119,7 +128,11 @@ import PremiumBiodataDetail from "../Component/Home/PremiumBiodataDetail";
                 {  
                   path: "approvedPremium",
                    element:<PremiumApproval></PremiumApproval>
-                  }
+                  },
+                  {  
+                    path: "approvedContactRequest",
+                     element:<ApproveContactRequest></ApproveContactRequest>
+                    }
       ]
     }
   ]);
