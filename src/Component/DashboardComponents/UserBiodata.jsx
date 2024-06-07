@@ -74,7 +74,7 @@ const UserBiodata = () => {
       console.log(updatedBiodata);
   
       // send data to server
-      fetch(`http://localhost:5000/biodata/${biodata._id}`, {
+      fetch(`https://matrimony-server-sable.vercel.app/biodata/${biodata._id}`, {
           method: 'PUT',
           headers: {
               'content-type' : 'application/json'
@@ -115,7 +115,7 @@ const UserBiodata = () => {
 
     const fetchUserBiodata = async (email) => {
         try {
-            const response = await fetch(`http://localhost:5000/biodata/user/${email}`);
+            const response = await fetch(`https://matrimony-server-sable.vercel.app/biodata/user/${email}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch user biodata');
             }
@@ -217,10 +217,11 @@ const UserBiodata = () => {
                       className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                     >
                      <option defaultValue={biodata.height}>{biodata.height}</option>
-                      <option value="4'">4'-4.5'</option>
-                      <option value="5'">4.6'-5</option>
-                      <option value="6'">5.1'-6'</option>
-                      <option value="7'">6'-7'</option>
+                      <option value="4'">4'</option>
+                      <option value="5'">4.5'</option>
+                      <option value="6'">5'</option>
+                      <option value="7'">5.5'</option>
+                      <option value="7'">6'</option>
                     </select>
                   </div>
                   <div>
@@ -234,10 +235,12 @@ const UserBiodata = () => {
                       className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                     >
                       <option defaultValue={biodata.weight}>{biodata.weight}</option>
-                      <option value="50kg">40kg-50kg</option>
-                      <option value="60kg">50kg-60kg</option>
-                      <option value="70kg">60kg-70kg</option>
-                      <option value="80kg">70kg-80kg</option>
+                      <option value="50kg">40kg</option>
+                      <option value="60kg">50kg</option>
+                      <option value="70kg">60kg</option>
+                      <option value="80kg">70kg</option>
+                      <option value="80kg">80kg</option>
+                      <option value="80kg">80kg+</option>
                     </select>
                   </div>
                 </div>
@@ -271,6 +274,7 @@ const UserBiodata = () => {
                       <option value="Doctor">Doctor</option>
                       <option value="Teacher">Teacher</option>
                       <option value="Businessman">Businessman</option>
+                      <option value="ServiceHolder">Service Holder</option>
                       <option value="Others">Others</option>
                     </select>
                   </div>
@@ -381,10 +385,11 @@ const UserBiodata = () => {
                     >
                       
                       <option defaultValue={biodata.partnerHeight}>{biodata.partnerHeight}</option>
-                      <option value="4'">4'-4.5'</option>
-                      <option value="5'">4.6'-5</option>
-                      <option value="6'">5.1'-6'</option>
-                      <option value="7'">6'-7'</option>
+                      <option value="4'">4'</option>
+                      <option value="5'">4.5'</option>
+                      <option value="6'">5'</option>
+                      <option value="6'">5.5'</option>
+                      <option value="7'">6'</option>
                     </select>
                   </div>
                   <div>
@@ -398,10 +403,12 @@ const UserBiodata = () => {
                       className="w-full px-3 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                     >
                       <option defaultValue={biodata.partnerWeight}>{biodata.partnerWeight}</option>
-                      <option value="50kg">40kg-50kg</option>
-                      <option value="60kg">50kg-60kg</option>
-                      <option value="70kg">60kg-70kg</option>
-                      <option value="80kg">70kg-80kg</option>
+                      <option value="50kg">45kg</option>
+                      <option value="60kg">50kg</option>
+                      <option value="60kg">60kg</option>
+                      <option value="70kg">70kg</option>
+                      <option value="80kg">80kg</option>
+                      <option value="80kg">80kg+</option>
                     </select>
                   </div>
                 </div>

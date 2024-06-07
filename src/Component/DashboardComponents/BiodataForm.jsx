@@ -70,7 +70,7 @@ const BiodataForm = () => {
     console.log(newBiodata);
 
     // send data to server
-    fetch('http://localhost:5000/biodata', {
+    fetch('https://matrimony-server-sable.vercel.app/biodata', {
         method: 'POST',
         headers: {
             'content-type' : 'application/json'

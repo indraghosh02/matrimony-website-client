@@ -25,7 +25,7 @@ const CreateEditBiodat = () => {
     const [existingBiodata, setExistingBiodata] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/biodata/user/${user.email}`)
+        fetch(`https://matrimony-server-sable.vercel.app/biodata/user/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setExistingBiodata(data);

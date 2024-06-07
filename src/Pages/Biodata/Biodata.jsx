@@ -21,7 +21,7 @@ const Biodata = () => {
        <div className='flex p-10' >
 
         <div className='w-1/2'>
-          
+          <FilterBiodata></FilterBiodata>
         </div>
         {/* <div>
         <h2 className='text-3xl font-bold text-center '> All Biodatas </h2>

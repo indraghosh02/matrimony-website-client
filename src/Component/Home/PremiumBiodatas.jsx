@@ -13,7 +13,7 @@ const PremiumBiodatas = () => {
 
   const fetchPremiumBiodatas = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/premium-requests');
+      const response = await axios.get('https://matrimony-server-sable.vercel.app/premium-requests');
       const approvedBiodatas = response.data.filter(request => request.status === "Approved");
       setPremiumBiodatas(approvedBiodatas);
     } catch (error) {

@@ -20,8 +20,8 @@ const BiodataDetail = () => {
   useEffect(() => {
     const fetchBiodata = async () => {
       try {
-        const biodataResponse = await axios.get(`http://localhost:5000/biodata/${id}`);
-        const allBiodataResponse = await axios.get('http://localhost:5000/biodata');
+        const biodataResponse = await axios.get(`https://matrimony-server-sable.vercel.app/biodata/${id}`);
+        const allBiodataResponse = await axios.get('https://matrimony-server-sable.vercel.app/biodata');
         setBiodata(biodataResponse.data);
         setAllBiodata(allBiodataResponse.data);
         setLoading(false);
@@ -36,7 +36,7 @@ const BiodataDetail = () => {
 
   const handleAddToFavourites = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/favourite', {
+      const response = await axios.post('https://matrimony-server-sable.vercel.app/favourite', {
         favouriteData: biodata,
         userEmail: user.email,
       });

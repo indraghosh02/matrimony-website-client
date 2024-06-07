@@ -10,7 +10,7 @@ const PremiumBiodataDetail = () => {
   useEffect(() => {
     const fetchBiodataDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/premium-requests/${id}`);
+        const response = await axios.get(`https://matrimony-server-sable.vercel.app/premium-requests/${id}`);
         setBiodata(response.data);
       } catch (error) {
         console.error('Error fetching premium biodata details:', error);

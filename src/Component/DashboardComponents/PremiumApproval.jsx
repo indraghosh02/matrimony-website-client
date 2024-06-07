@@ -11,7 +11,7 @@ const PremiumApproval = () => {
 
     const fetchRequests = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/premium-requests');
+            const { data } = await axios.get('https://matrimony-server-sable.vercel.app/premium-requests');
             setRequests(data);
         } catch (error) {
             console.error('Error fetching requests:', error);
@@ -20,7 +20,7 @@ const PremiumApproval = () => {
 
     const approveRequest = async (requestId) => {
         try {
-            const { data } = await axios.patch(`http://localhost:5000/premium-requests/approve/${requestId}`);
+            const { data } = await axios.patch(`https://matrimony-server-sable.vercel.app/premium-requests/approve/${requestId}`);
             if (data.modifiedCount > 0) {
                 toast.success('Biodata has been made premium');
                 fetchRequests();

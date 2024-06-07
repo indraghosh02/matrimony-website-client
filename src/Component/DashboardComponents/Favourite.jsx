@@ -9,7 +9,7 @@ const Favourite = () => {
   const queryClient = useQueryClient();
 
   const fetchFavourites = async () => {
-    const { data } = await axios.get(`http://localhost:5000/favourites/${user.email}`);
+    const { data } = await axios.get(`https://matrimony-server-sable.vercel.app/favourites/${user.email}`);
     return data;
   };
 
@@ -31,7 +31,7 @@ const Favourite = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/favourite/${_id}`, {
+        fetch(`https://matrimony-server-sable.vercel.app/favourite/${_id}`, {
           method: 'DELETE'
         })
           .then(res => res.json())
@@ -54,39 +54,94 @@ const Favourite = () => {
   };
 
   return (
-    <div className='flex p-10'>
-      <div className='items-center justify-center p-6'>
-        <h2 className='text-3xl font-bold mb-4 text-red-600 font-serif'>My Favourite Biodatas</h2>
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white">
-            <thead className="bg-red-600 text-white">
-              <tr>
-                <th className="w-1/6 py-2">Name</th>
-                <th className="w-1/6 py-2">Biodata ID</th>
-                <th className="w-1/6 py-2">Permanent Address</th>
-                <th className="w-1/6 py-2">Occupation</th>
-                <th className="w-1/6 py-2">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {favourites && favourites.map(fav => (
-                <tr key={fav._id} className="text-center border-b">
-                  <td className="py-2">{fav.name}</td>
-                  <td className="py-2">{fav.biodataId}</td>
-                  <td className="py-2">{fav.permanentDivision}</td>
-                  <td className="py-2">{fav.occupation}</td>
-                  <td className="py-2">
-                    <button onClick={() => handleDelete(fav._id)} className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+
+    <div className="flex p-10">
+    <div className="items-center justify-center p-6 w-full">
+      <h2 className="text-3xl font-bold mb-4 text-blue-600 text-center font-serif">My Favourite Biodatas</h2>
+      <div className="overflow-x-auto shadow-md sm:rounded-lg">
+        <table className="min-w-full bg-white divide-y divide-gray-200">
+          <thead className="bg-blue-600 text-white">
+            <tr>
+              <th className="w-1/6 py-3 px-6 text-left text-xs font-medium uppercase tracking-wider">Name</th>
+              <th className="w-1/6 py-3 px-6 text-left text-xs font-medium uppercase tracking-wider">Biodata ID</th>
+              <th className="w-1/6 py-3 px-6 text-left text-xs font-medium uppercase tracking-wider">Permanent Address</th>
+           
+          
+               <th className="w-1/6 py-3 px-6 text-left text-xs font-medium uppercase tracking-wider">Occupation</th>
+               <th className="w-1/6 py-3 px-6 text-left text-xs font-medium uppercase tracking-wider">Action</th>
+               
+               
+             
+             
+              
+            
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {favourites && favourites.map(fav => (
+              <tr key={fav._id} className="hover:bg-gray-100">
+                <td className="py-4 px-6 text-sm font-medium text-gray-900">{fav.name}</td>
+                <td className="py-4 px-6 text-sm text-gray-500">{fav.biodataId}</td>
+                <td className="py-4 px-6 text-sm text-gray-500">{fav.permanentDivision}</td>
+               
+                   <td className="py-4 px-6 text-sm text-gray-500">{fav.occupation}</td>
+                  
+                
+              
+          
+                <td className="py-2">
+                <button onClick={() => handleDelete(fav._id)} className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                       Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                   </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
+  </div>
+
+
+
+
+
+
+
+
+    // <div className='flex p-10'>
+    //   <div className='items-center justify-center p-6'>
+    //     <h2 className='text-3xl font-bold mb-4 text-red-600 font-serif'>My Favourite Biodatas</h2>
+    //     <div className="overflow-x-auto">
+    //       <table className="min-w-full bg-white">
+    //         <thead className="bg-red-600 text-white">
+    //           <tr>
+    //             <th className="w-1/6 py-2">Name</th>
+    //             <th className="w-1/6 py-2">Biodata ID</th>
+    //             <th className="w-1/6 py-2">Permanent Address</th>
+    //             <th className="w-1/6 py-2">Occupation</th>
+    //             <th className="w-1/6 py-2">Actions</th>
+    //           </tr>
+    //         </thead>
+    //         <tbody>
+    //           {favourites && favourites.map(fav => (
+    //             <tr key={fav._id} className="text-center border-b">
+    //               <td className="py-2">{fav.name}</td>
+    //               <td className="py-2">{fav.biodataId}</td>
+    //               <td className="py-2">{fav.permanentDivision}</td>
+    //               <td className="py-2">{fav.occupation}</td>
+    //               <td className="py-2">
+    //                 <button onClick={() => handleDelete(fav._id)} className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+    //                   Delete
+    //                 </button>
+    //               </td>
+    //             </tr>
+    //           ))}
+    //         </tbody>
+    //       </table>
+    //     </div>
+    //   </div>
+    // </div>
   );
 };
 
@@ -126,7 +181,7 @@ export default Favourite;
 //   const [fav, setFev] = useState();
 
 //   const fetchFavourites = async () => {
-//     const { data } = await axios.get(`http://localhost:5000/favourites/${user.email}`);
+//     const { data } = await axios.get(`https://matrimony-server-sable.vercel.app/favourites/${user.email}`);
 //     return data;
 //   };
 
@@ -150,7 +205,7 @@ export default Favourite;
 //         if (result.isConfirmed) {
 
 
-//             fetch(`http://localhost:5000/favourite/${_id}`, {
+//             fetch(`https://matrimony-server-sable.vercel.app/favourite/${_id}`, {
 //                 method: 'DELETE'
 //             })
 //             .then(res => res.json())

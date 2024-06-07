@@ -119,19 +119,19 @@ import ApproveContactRequest from "../Component/DashboardComponents/ApproveConta
             },
             {  
               path: "dashboard",
-               element:<AdminDashboard></AdminDashboard>
+               element: <AdminRoute> <AdminDashboard></AdminDashboard></AdminRoute>  
               },
               {  
                 path: "success_stories",
-                 element:<SuccessStories></SuccessStories>
+                 element: <AdminRoute>   <SuccessStories></SuccessStories> </AdminRoute>  
                 },
                 {  
                   path: "approvedPremium",
-                   element:<PremiumApproval></PremiumApproval>
+                   element: <AdminRoute>  <PremiumApproval></PremiumApproval> </AdminRoute>  
                   },
                   {  
                     path: "approvedContactRequest",
-                     element:<ApproveContactRequest></ApproveContactRequest>
+                     element: <AdminRoute>   <ApproveContactRequest></ApproveContactRequest> </AdminRoute>  
                     }
       ]
     }
