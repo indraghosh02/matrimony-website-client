@@ -6,7 +6,7 @@ Admin Password: 1234Aa#
 # live link 
 [Love Link ](https://matrimony-fd8e3.web.app/)
 
-# project overview
+# Project overview
 Love Link simplifies matchmaking with a user-friendly platform, detailed biodata profiles, and inspiring success stories. It enhances transparency and accessibility, allowing secure profile management and exclusive contact info for premium members. Admins ensure site integrity, addressing issues like lack of transparency and limited accessibility in traditional matchmaking.
 # 3 Best Features
 
@@ -21,6 +21,22 @@ Love Link simplifies matchmaking with a user-friendly platform, detailed biodata
 # Payment System:
 - Normal users must pay USD 5 to access contact info, with requests sent to admins for approval.
 - Ensures secure and controlled access to contact information, enhancing site reliability and user trust.
+
+# Technology used
+    - Frontend:  React.js, Talwind-css
+    - Backend:  Node.js and Express.js
+    - Database: MongoDB 
+    - Authentication & hosting :  Firebase 
+
+# To locally run
+
+  -Clone the Repository: Provides the command to clone the repository using Git.
+  -Install Dependencies: Uses npm install to install all necessary dependencies for the project.
+  -Run the Project: Executes npm run dev to start the project in development mode.
+
+-
+
+
 
 
 
