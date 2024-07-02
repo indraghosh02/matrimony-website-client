@@ -23,7 +23,7 @@ Love Link simplifies matchmaking with a user-friendly platform, detailed biodata
 - Normal users must pay USD 5 to access contact info, with requests sent to admins for approval.
 - Ensures secure and controlled access to contact information, enhancing site reliability and user trust.
 
-# Technology used
+# Technologies used
 - React.js
 - Talwind-css
 - HTML
