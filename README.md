@@ -15,12 +15,12 @@ Love Link simplifies matchmaking with a user-friendly platform, detailed biodata
 - Admins can view user lists and promote users to premium or admin status.
 - They can approve premium biodata requests and view marriage success stories.
 # User Panel:
-. Logged-in users can access their dashboard to create or edit biodata.
-. Users can view their biodata, manage their favorite list, and handle contact requests.
-. After logging in, users can securely access detailed profiles and share their marriage stories via the "Got Married" route.
+- Logged-in users can access their dashboard to create or edit biodata.
+- Users can view their biodata, manage their favorite list, and handle contact requests.
+- After logging in, users can securely access detailed profiles and share their marriage stories via the "Got Married" route.
 # Payment System:
-. Normal users must pay USD 5 to access contact info, with requests sent to admins for approval.
-. Ensures secure and controlled access to contact information, enhancing site reliability and user trust.
+- Normal users must pay USD 5 to access contact info, with requests sent to admins for approval.
+- Ensures secure and controlled access to contact information, enhancing site reliability and user trust.
 
 
 
