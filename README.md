@@ -24,7 +24,7 @@ Love Link simplifies matchmaking with a user-friendly platform, detailed biodata
 - Ensures secure and controlled access to contact information, enhancing site reliability and user trust.
 
 # Technology used
-React.js, Talwind-css, HTML Node.js and Express.j, MongoDB, Firebase 
+React.js, Talwind-css, HTML Node.js, Express.js, MongoDB, Firebase 
 
 # To locally run
 
