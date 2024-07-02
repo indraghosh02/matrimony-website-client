@@ -30,11 +30,11 @@ Love Link simplifies matchmaking with a user-friendly platform, detailed biodata
 
 # To locally run
 
-  -Clone the Repository: Provides the command to clone the repository using Git.
-  -Install Dependencies: Uses npm install to install all necessary dependencies for the project.
-  -Run the Project: Executes npm run dev to start the project in development mode.
+  - Clone the Repository: Provides the command to clone the repository using Git.
+  - Install Dependencies: Uses npm install to install all necessary dependencies for the project.
+  - Run the Project: Executes npm run dev to start the project in development mode.
 
--
+
 
 
 
