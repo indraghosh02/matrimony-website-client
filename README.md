@@ -6,22 +6,21 @@ Admin Password: 1234Aa#
 # live link 
 [Love Link ](https://matrimony-fd8e3.web.app/)
 
-# assignment12_category_0018
-# Features
+# project overview
+Love Link simplifies matchmaking with a user-friendly platform, detailed biodata profiles, and inspiring success stories. It enhances transparency and accessibility, allowing secure profile management and exclusive contact info for premium members. Admins ensure site integrity, addressing issues like lack of transparency and limited accessibility in traditional matchmaking.
+# 3 Best Features
 
-1.	The home page features an easy-to-use navigation bar, a slider,  some premium members card, count of biodatas available on the site , Showcase inspiring marriage success stories shared by users etc
-2.	All biodatas are available on biodata route , with detailed profiles available after login.
-3.	Only Premium members can view contact information of biodata profiles &  normal user  requires to pay  USD 5 to access contact info 
-4.	After paying USD 5 the request is sent to admin for approval 
-5.	Anyone can see About info and can contact with the wesite .
-6.	Logged in user can access their Dashboard 
-7.	After logging in, users can access their dashboard to create or edit biodata , can view their biodata, and can see & manage their added favorite list and contact requests.
-8.	After approval of contact request , contact info will be visible on contact request route
-9.	Users can share their marriage stories by filling out a form on the "Got Married" route.
-10.	Exclusive access for admins to manage the site, including viewing user lists, promoting users to premium or admin status, and approving premium biodata requests.
-11.	Admin can see normal biodata and premium biodata count on “Admin dashboard”
-12.	Admins can approve user requests to access biodata contact information.
-13.	Admins can review marriage success stories submitted by users.
+# Admin Panel:
+. Exclusive access for admins to manage the site effectively.
+. Admins can view user lists and promote users to premium or admin status.
+. They can approve premium biodata requests and view marriage success stories.
+# User Panel:
+. Logged-in users can access their dashboard to create or edit biodata.
+. Users can view their biodata, manage their favorite list, and handle contact requests.
+. After logging in, users can securely access detailed profiles and share their marriage stories via the "Got Married" route.
+# Payment System:
+. Normal users must pay USD 5 to access contact info, with requests sent to admins for approval.
+. Ensures secure and controlled access to contact information, enhancing site reliability and user trust.
 
 
 
