@@ -11,9 +11,9 @@ Love Link simplifies matchmaking with a user-friendly platform, detailed biodata
 # 3 Best Features
 
 # Admin Panel:
-. Exclusive access for admins to manage the site effectively.
-. Admins can view user lists and promote users to premium or admin status.
-. They can approve premium biodata requests and view marriage success stories.
+- Exclusive access for admins to manage the site effectively.
+- Admins can view user lists and promote users to premium or admin status.
+- They can approve premium biodata requests and view marriage success stories.
 # User Panel:
 . Logged-in users can access their dashboard to create or edit biodata.
 . Users can view their biodata, manage their favorite list, and handle contact requests.
